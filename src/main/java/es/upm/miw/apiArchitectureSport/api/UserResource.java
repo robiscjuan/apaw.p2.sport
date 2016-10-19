@@ -4,10 +4,11 @@ import java.util.List;
 
 import es.upm.miw.apiArchitectureSport.controllers.UserController;
 import es.upm.miw.apiArchitectureSport.exceptions.InvalidSportFieldException;
-import es.upm.miw.apiArchitectureTheme.daos.DaoFactory;
-import es.upm.miw.apiArchitectureTheme.entities.Theme;
-import es.upm.miw.apiArchitectureTheme.wrappers.ThemeListWrapper;
-import es.upm.miw.apiArchitectureTheme.wrappers.ThemeWrapper;
+import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
+import es.upm.miw.apiArchitectureSport.daos.DaoFactory;
+import es.upm.miw.apiArchitectureSport.entities.User;
+import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
+import es.upm.miw.apiArchitectureSport.wrappers.UserWrapper;
 
 public class UserResource {
 	// POST **/users body="nick:email"
@@ -17,14 +18,14 @@ public class UserResource {
 	}
 
 	// TODO-1 GET **/users
-	/*public UserListWrapper userList() {
-		List<User> themeList = DaoFactory.getFactory().getThemeDao().findAll();
-		ThemeListWrapper themeListWrapper = new ThemeListWrapper();
-		for (Theme theme : themeList) {
-			themeListWrapper.addThemeWrapper(new ThemeWrapper(theme.getId(), theme.getName()));
+	public UserListWrapper userList() {
+		List<User> userList = DaoFactory.getFactory().getUserDao().findAll();
+		UserListWrapper userListWrapper = new UserListWrapper();
+		for (User user : userList) {
+			userListWrapper.addUserWrapper(new UserWrapper(user.getNick(), user.getEmail()));
 		}
-		return themeListWrapper;
-	}*/
+		return userListWrapper;
+	}
 
 	// TODO-2 GET **/user/search?sport=*
 
