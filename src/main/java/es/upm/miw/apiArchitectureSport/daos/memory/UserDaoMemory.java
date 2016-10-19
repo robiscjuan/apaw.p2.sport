@@ -14,7 +14,7 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	}
 
 	@Override
-	protected Integer getId(User entity) {
+	protected String getId(User entity) {
 		return entity.getNick();
 	}
 
@@ -36,20 +36,9 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	}
 
 	@Override
-	public User read(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void setId(User entity, Integer id) {
-		// TODO Auto-generated method stub
+	public void create(User entity) {
+		super.getMap().put(entity.getNick(), entity);
+		this.setId(entity,entity.getNick());
 		
 	}
 
