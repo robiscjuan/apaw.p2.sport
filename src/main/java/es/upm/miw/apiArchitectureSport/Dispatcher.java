@@ -25,7 +25,7 @@ public class Dispatcher {
 			// response.setBody(userResource.themeList().toString());
 
 		}
-		// **/user/search?sport=*
+		//GET **/user/search?sport=*
 		else if (("users".equals(request.paths()[0])) && ("search".equals(request.paths()[1]))) {
 			try {
 				String paramSport = (request.getParams()).get("sport");
@@ -74,7 +74,7 @@ public class Dispatcher {
 	}
 
 	public void doPut(HttpRequest request, HttpResponse response) {
-		// PUT **/sport/{nick}/sport body="sportName"
+		// PUT **/user/{nick}/sport body="sportName"
 		if (("users".equals(request.paths()[0])) && ("sport".equals(request.paths()[2]))) {
 			try {
 				// TODO
