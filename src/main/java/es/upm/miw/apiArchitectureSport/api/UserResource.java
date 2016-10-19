@@ -4,27 +4,23 @@ import java.util.List;
 
 import es.upm.miw.apiArchitectureSport.controllers.UserController;
 import es.upm.miw.apiArchitectureSport.exceptions.InvalidSportFieldException;
-import es.upm.miw.apiArchitectureTheme.daos.DaoFactory;
-import es.upm.miw.apiArchitectureTheme.entities.Theme;
-import es.upm.miw.apiArchitectureTheme.wrappers.ThemeListWrapper;
-import es.upm.miw.apiArchitectureTheme.wrappers.ThemeWrapper;
+import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
+import es.upm.miw.apiArchitectureSport.daos.DaoFactory;
+import es.upm.miw.apiArchitectureSport.entities.User;
+import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
+import es.upm.miw.apiArchitectureSport.wrappers.UserWrapper;
 
 public class UserResource {
 	// POST **/users body="nick:email"
-	public void createUser(String nick) throws InvalidSportFieldException {
+	public void createUser(String nick,String email) throws InvalidSportFieldException {
 		this.validateField(nick);
-		new UserController().createUser(nick);
+		new UserController().createUser(nick,email);
 	}
 
 	// TODO-1 GET **/users
-	/*public UserListWrapper userList() {
-		List<User> themeList = DaoFactory.getFactory().getThemeDao().findAll();
-		ThemeListWrapper themeListWrapper = new ThemeListWrapper();
-		for (Theme theme : themeList) {
-			themeListWrapper.addThemeWrapper(new ThemeWrapper(theme.getId(), theme.getName()));
-		}
-		return themeListWrapper;
-	}*/
+	public UserListWrapper userList() {
+		return new UserController().userList();
+	}
 
 	// TODO-2 GET **/user/search?sport=*
 

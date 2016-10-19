@@ -3,7 +3,7 @@ package es.upm.miw.apiArchitectureSport;
 import es.upm.miw.apiArchitectureSport.api.SportResource;
 import es.upm.miw.apiArchitectureSport.api.UserResource;
 import es.upm.miw.apiArchitectureSport.exceptions.InvalidRequestException;
-import es.upm.miw.apiArchitectureSport.exceptions.InvalidThemeFieldException;
+import es.upm.miw.apiArchitectureSport.exceptions.InvalidSportFieldException;
 import es.upm.miw.web.http.HttpRequest;
 import es.upm.miw.web.http.HttpResponse;
 import es.upm.miw.web.http.HttpStatus;
@@ -21,8 +21,7 @@ public class Dispatcher {
 	public void doGet(HttpRequest request, HttpResponse response) {
 		// GET **/users
 		if ("users".equals(request.getPath())) {
-			// TODO
-			// response.setBody(userResource.themeList().toString());
+			response.setBody(userResource.userList().toString());
 
 		}
 		//GET **/user/search?sport=*
@@ -50,7 +49,7 @@ public class Dispatcher {
 			try {
 				String nick = request.getBody().split(":")[0];
 				String email = request.getBody().split(":")[1];
-				// TODO
+				userResource.createUser(nick,email);
 				response.setStatus(HttpStatus.CREATED);
 			} catch (Exception e) {
 				this.responseError(response, e);
