@@ -10,6 +10,6 @@ public class NotFoundUserNickException extends Exception {
 	}
 
 	public NotFoundUserNickException() {
-		this(DESCRIPTION);
+		this("");
 	}
 }

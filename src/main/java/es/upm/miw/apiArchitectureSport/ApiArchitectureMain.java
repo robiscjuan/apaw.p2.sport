@@ -37,6 +37,15 @@ public class ApiArchitectureMain {
 		request.setBody("");
 		this.request();
 		
+		request.setMethod(HttpMethod.POST);
+		request.setPath("sports");
+		request.setBody("tenis");
+		this.request();
+		request.setBody("tenis");
+		this.request();
+		request.setBody("ajedrez");
+		this.request();
+		
 		request.setMethod(HttpMethod.PUT);
 		request.setPath("users/uno/sport");
 		request.setBody("tenis");

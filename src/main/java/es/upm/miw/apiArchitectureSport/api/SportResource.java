@@ -1,13 +1,14 @@
 package es.upm.miw.apiArchitectureSport.api;
 
 import es.upm.miw.apiArchitectureSport.controllers.SportController;
+import es.upm.miw.apiArchitectureSport.exceptions.AlreadyExistsException;
 import es.upm.miw.apiArchitectureSport.exceptions.InvalidSportFieldException;
 import es.upm.miw.apiArchitectureSport.exceptions.NotFoundUserNickException;
 
 public class SportResource {
 
 	// POST **/sport body="name"
-	public void createSport(String name) throws InvalidSportFieldException {
+	public void createSport(String name) throws InvalidSportFieldException, AlreadyExistsException {
 		this.validateField(name);
 		new SportController().createSport(name);
 	}

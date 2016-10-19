@@ -42,6 +42,11 @@ public abstract class GenericMemoryDao<T> implements GenericDao<T, String> {
 		return new ArrayList<T>(map.values());
 	}
 
+	@Override
+	public boolean checkExists(String id) {
+		return map.containsKey(id);
+	}
+
 	protected abstract String getId(T entity);
 
 	protected abstract void setId(T entity, String id);
