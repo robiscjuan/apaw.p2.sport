@@ -49,7 +49,7 @@ public class Dispatcher {
 			try {
 				String nick = request.getBody().split(":")[0];
 				String email = request.getBody().split(":")[1];
-				// TODO
+				userResource.createUser(nick,email);
 				response.setStatus(HttpStatus.CREATED);
 			} catch (Exception e) {
 				this.responseError(response, e);

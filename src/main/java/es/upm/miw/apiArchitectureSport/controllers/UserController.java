@@ -8,8 +8,8 @@ import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
 import es.upm.miw.apiArchitectureSport.wrappers.UserWrapper;
 
 public class UserController {
-	public void createUser(String nick) {
-		// DaoFactory.getFactory.getUserDao().create(new User(nick));
+	public void createUser(String nick,String email) {
+		DaoFactory.getFactory().getUserDao().create(new User(nick,email));
 	}
 
 	public UserListWrapper userList() {

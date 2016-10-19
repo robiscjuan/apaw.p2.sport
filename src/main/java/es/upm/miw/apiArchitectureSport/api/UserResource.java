@@ -12,9 +12,9 @@ import es.upm.miw.apiArchitectureSport.wrappers.UserWrapper;
 
 public class UserResource {
 	// POST **/users body="nick:email"
-	public void createUser(String nick) throws InvalidSportFieldException {
+	public void createUser(String nick,String email) throws InvalidSportFieldException {
 		this.validateField(nick);
-		new UserController().createUser(nick);
+		new UserController().createUser(nick,email);
 	}
 
 	// TODO-1 GET **/users
