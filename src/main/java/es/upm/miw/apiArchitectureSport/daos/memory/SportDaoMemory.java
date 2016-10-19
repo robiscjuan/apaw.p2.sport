@@ -12,13 +12,19 @@ public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao 
 	}
 
 	@Override
-	protected Integer getId(Sport entity) {
+	protected String getId(Sport entity) {
 		return entity.getName();
 	}
 
 	@Override
 	protected void setId(Sport entity, String name) {
-		entity.setName();
+		entity.setName(name);
+	}
+
+	@Override
+	public void create(Sport entity) {
+		super.getMap().put(entity.getName(), entity);
+		this.setId(entity,entity.getName());
 	}
 
 }

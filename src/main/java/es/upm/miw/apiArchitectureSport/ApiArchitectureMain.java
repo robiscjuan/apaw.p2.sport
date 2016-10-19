@@ -1,7 +1,7 @@
 package es.upm.miw.apiArchitectureSport;
 
-//import es.upm.miw.apiArchitectureSport.daos.DaoFactory;
-//import es.upm.miw.apiArchitectureSport.daos.memory.DaoFactoryMemory;
+import es.upm.miw.apiArchitectureSport.daos.DaoFactory;
+import es.upm.miw.apiArchitectureSport.daos.memory.DaoFactoryMemory;
 import es.upm.miw.web.http.HttpMethod;
 import es.upm.miw.web.http.HttpRequest;
 import es.upm.miw.web.http.HttpResponse;
@@ -101,6 +101,6 @@ public class ApiArchitectureMain {
 		ApiArchitectureMain main = new ApiArchitectureMain();
 		IO.getIO().addView(main);
 		main.showStatus();
-		//DaoFactory.setFactory(new DaoFactoryMemory());
+		DaoFactory.setFactory(new DaoFactoryMemory());
 	}
 }
