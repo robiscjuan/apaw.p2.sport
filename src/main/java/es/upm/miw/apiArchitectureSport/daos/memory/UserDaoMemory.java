@@ -35,4 +35,22 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 		return userNicks;
 	}
 
+	@Override
+	public User read(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteById(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void setId(User entity, Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

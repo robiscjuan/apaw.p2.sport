@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import es.upm.miw.apiArchitectureTheme.daos.GenericDao;
+import es.upm.miw.apiArchitectureSport.daos.GenericDao;
 
 public abstract class GenericMemoryDao<T> implements GenericDao<T, Integer> {
 
-	private Map<Integer, T> map;
+	private Map<String, T> map;
 
-	protected void setMap(Map<Integer, T> map) {
+	protected void setMap(Map<String, T> map) {
 		this.map = map;
 	}
 
 	@Override
 	public void create(T entity) {
 		map.put(map.size() + 1, entity);
-		this.setId(entity, map.size());
+		this.setId(entity.getId(), map.size());
 	}
 
 	@Override
