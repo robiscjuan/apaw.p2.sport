@@ -19,12 +19,7 @@ public class UserResource {
 
 	// TODO-1 GET **/users
 	public UserListWrapper userList() {
-		List<User> userList = DaoFactory.getFactory().getUserDao().findAll();
-		UserListWrapper userListWrapper = new UserListWrapper();
-		for (User user : userList) {
-			userListWrapper.addUserWrapper(new UserWrapper(user.getNick(), user.getEmail()));
-		}
-		return userListWrapper;
+		return new UserController().userList();
 	}
 
 	// TODO-2 GET **/user/search?sport=*
