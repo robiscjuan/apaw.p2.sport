@@ -1,10 +1,16 @@
 package es.upm.miw.apiArchitectureSport.api;
 
+import java.util.List;
+
 import es.upm.miw.apiArchitectureSport.controllers.UserController;
 import es.upm.miw.apiArchitectureSport.exceptions.AlreadyExistsException;
 import es.upm.miw.apiArchitectureSport.exceptions.InvalidSportFieldException;
 import es.upm.miw.apiArchitectureSport.exceptions.NotFoundException;
 import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
+import es.upm.miw.apiArchitectureSport.daos.DaoFactory;
+import es.upm.miw.apiArchitectureSport.entities.User;
+import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
+import es.upm.miw.apiArchitectureSport.wrappers.UserWrapper;
 
 public class UserResource {
 	// POST **/users body="nick:email"

@@ -3,6 +3,7 @@ package es.upm.miw.apiArchitectureSport.api;
 import es.upm.miw.apiArchitectureSport.controllers.SportController;
 import es.upm.miw.apiArchitectureSport.exceptions.AlreadyExistsException;
 import es.upm.miw.apiArchitectureSport.exceptions.InvalidSportFieldException;
+import es.upm.miw.apiArchitectureSport.exceptions.NotFoundException;
 
 public class SportResource {
 
