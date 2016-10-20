@@ -8,18 +8,27 @@ import es.upm.miw.apiArchitectureSport.exceptions.AlreadyExistsException;
 import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
 import es.upm.miw.apiArchitectureSport.wrappers.UserWrapper;
 
-public class UserController{
-	
-	public void createUser(String nick,String email)throws AlreadyExistsException {
-		if(DaoFactory.getFactory().getUserDao().read(nick) == null){
-		DaoFactory.getFactory().getUserDao().create(new User(nick,email));
-		}else{
+public class UserController {
+
+	public void createUser(String nick, String email) throws AlreadyExistsException {
+		if (DaoFactory.getFactory().getUserDao().read(nick) == null) {
+			DaoFactory.getFactory().getUserDao().create(new User(nick, email));
+		} else {
 			throw new AlreadyExistsException();
 		}
 	}
 
 	public UserListWrapper userList() {
 		List<User> userList = DaoFactory.getFactory().getUserDao().findAll();
+		return getUsersWrapper(userList);
+	}
+
+	public UserListWrapper userList(String sport) {
+		List<User> userList = DaoFactory.getFactory().getUserDao().findValueBySportName(sport);
+		return getUsersWrapper(userList);
+	}
+
+	private UserListWrapper getUsersWrapper(List<User> userList) {
 		UserListWrapper userListWrapper = new UserListWrapper();
 		for (User user : userList) {
 			userListWrapper.addUserWrapper(new UserWrapper(user.getNick(), user.getEmail()));

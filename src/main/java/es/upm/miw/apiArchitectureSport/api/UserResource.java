@@ -13,9 +13,9 @@ import es.upm.miw.apiArchitectureSport.wrappers.UserWrapper;
 
 public class UserResource {
 	// POST **/users body="nick:email"
-	public void createUser(String nick,String email) throws InvalidSportFieldException,  AlreadyExistsException {
+	public void createUser(String nick, String email) throws InvalidSportFieldException, AlreadyExistsException {
 		this.validateField(nick);
-		new UserController().createUser(nick,email);
+		new UserController().createUser(nick, email);
 	}
 
 	// TODO-1 GET **/users
@@ -24,7 +24,9 @@ public class UserResource {
 	}
 
 	// TODO-2 GET **/user/search?sport=*
-
+	public UserListWrapper userList(String sport) {
+		return new UserController().userList(sport);
+	}
 	// TODO-3 PUT **/user/{nick}/sport body="sportName"
 
 	// TODO Revisar si esto se puede elevar (esta en los dos resources)

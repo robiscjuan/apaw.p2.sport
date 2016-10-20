@@ -31,8 +31,7 @@ public class Dispatcher {
 				if (paramSport == null) {
 					responseError(response, new InvalidRequestException(request.getPath()));
 				} else {
-					// TODO
-					// response.setBody(userResource.themeOverage(Integer.valueOf(request.paths()[1])).toString());
+					response.setBody(userResource.userList(paramSport).toString());
 				}
 			} catch (Exception e) {
 				responseError(response, e);
