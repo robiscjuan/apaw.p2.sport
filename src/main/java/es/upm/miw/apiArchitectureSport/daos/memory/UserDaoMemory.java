@@ -39,12 +39,12 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	@Override
 	public void create(User entity) {
 		super.getMap().put(entity.getNick(), entity);
-		this.setId(entity,entity.getNick());
-		
+		this.setId(entity, entity.getNick());
+
 	}
 
 	@Override
-	public void addSport(User entity , Sport sport) {
+	public void addSport(User entity, Sport sport) {
 		List<Sport> sportList = entity.getSports();
 		sportList.add(sport);
 		entity.setSports(sportList);

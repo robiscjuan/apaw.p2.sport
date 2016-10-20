@@ -24,7 +24,7 @@ public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao 
 	@Override
 	public void create(Sport entity) {
 		super.getMap().put(entity.getName(), entity);
-		this.setId(entity,entity.getName());
+		this.setId(entity, entity.getName());
 	}
 
 }

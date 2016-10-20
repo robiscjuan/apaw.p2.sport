@@ -44,7 +44,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		// TODO print sports
 		return "User [nick=" + this.nick + ", email=" + this.email + "]";
 	}
 }

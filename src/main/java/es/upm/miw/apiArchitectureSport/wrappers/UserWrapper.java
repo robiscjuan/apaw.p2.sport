@@ -43,7 +43,6 @@ public class UserWrapper {
 
 	@Override
 	public String toString() {
-		// TODO print sports
 		return "{nick=" + this.nick + ", email=" + this.email + "}";
 	}
 }

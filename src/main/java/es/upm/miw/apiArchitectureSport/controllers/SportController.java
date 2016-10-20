@@ -6,9 +6,9 @@ import es.upm.miw.apiArchitectureSport.exceptions.AlreadyExistsException;
 
 public class SportController {
 	public void createSport(String name) throws AlreadyExistsException {
-		if(DaoFactory.getFactory().getSportDao().read(name) == null){
-		 DaoFactory.getFactory().getSportDao().create(new Sport(name));
-		}else{
+		if (DaoFactory.getFactory().getSportDao().read(name) == null) {
+			DaoFactory.getFactory().getSportDao().create(new Sport(name));
+		} else {
 			throw new AlreadyExistsException();
 		}
 	}

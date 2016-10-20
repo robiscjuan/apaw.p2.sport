@@ -6,6 +6,7 @@ import es.upm.miw.apiArchitectureSport.daos.DaoFactory;
 import es.upm.miw.apiArchitectureSport.entities.Sport;
 import es.upm.miw.apiArchitectureSport.entities.User;
 import es.upm.miw.apiArchitectureSport.exceptions.AlreadyExistsException;
+import es.upm.miw.apiArchitectureSport.exceptions.NotFoundException;
 import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
 import es.upm.miw.apiArchitectureSport.wrappers.UserWrapper;
 
@@ -19,13 +20,13 @@ public class UserController {
 		}
 	}
 
-	public void addSport(String nick, String sportName) {
+	public void addSport(String nick, String sportName) throws NotFoundException {
 		if (DaoFactory.getFactory().getSportDao().read(sportName) != null) {
 			User user = DaoFactory.getFactory().getUserDao().read(nick);
 			Sport sport = DaoFactory.getFactory().getSportDao().read(sportName);
 			DaoFactory.getFactory().getUserDao().addSport(user, sport);
 		} else {
-			// TODO Throws error
+			throw new NotFoundException();
 		}
 	}
 

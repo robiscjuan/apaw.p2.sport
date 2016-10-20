@@ -30,13 +30,13 @@ public class ApiArchitectureMain {
 		this.request();
 		request.setBody("uno:tres@gmail.com");
 		this.request();
-		
+
 		request.setMethod(HttpMethod.GET);
 		request.setPath("users");
 		request.clearQueryParams();
 		request.setBody("");
 		this.request();
-		
+
 		request.setMethod(HttpMethod.POST);
 		request.setPath("sports");
 		request.setBody("tenis");
@@ -45,7 +45,7 @@ public class ApiArchitectureMain {
 		this.request();
 		request.setBody("ajedrez");
 		this.request();
-		
+
 		request.setMethod(HttpMethod.PUT);
 		request.setPath("users/uno/sport");
 		request.setBody("tenis");
@@ -59,14 +59,14 @@ public class ApiArchitectureMain {
 		request.setPath("users/dos/sport");
 		request.setBody("ajedrez");
 		this.request();
-		
+
 		request.setMethod(HttpMethod.GET);
 		request.setPath("users/search");
 		request.clearQueryParams();
 		request.addQueryParam("sport", "tenis");
 		request.setBody("");
 		this.request();
-		
+
 		request.setMethod(HttpMethod.POST);
 		request.setPath("noPath");
 		this.request();
