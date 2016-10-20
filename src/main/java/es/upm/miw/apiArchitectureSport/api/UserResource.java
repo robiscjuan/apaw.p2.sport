@@ -28,6 +28,9 @@ public class UserResource {
 		return new UserController().userList(sport);
 	}
 	// TODO-3 PUT **/user/{nick}/sport body="sportName"
+	public void addSport(String nick,String sportName){
+		new UserController().addSport(nick,sportName);
+	}
 
 	// TODO Revisar si esto se puede elevar (esta en los dos resources)
 	private void validateField(String field) throws InvalidSportFieldException {

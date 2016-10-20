@@ -3,6 +3,7 @@ package es.upm.miw.apiArchitectureSport.controllers;
 import java.util.List;
 
 import es.upm.miw.apiArchitectureSport.daos.DaoFactory;
+import es.upm.miw.apiArchitectureSport.entities.Sport;
 import es.upm.miw.apiArchitectureSport.entities.User;
 import es.upm.miw.apiArchitectureSport.exceptions.AlreadyExistsException;
 import es.upm.miw.apiArchitectureSport.wrappers.UserListWrapper;
@@ -18,13 +19,24 @@ public class UserController {
 		}
 	}
 
+	public void addSport(String nick, String sportName) {
+		if (DaoFactory.getFactory().getSportDao().read(sportName) != null) {
+			User user = DaoFactory.getFactory().getUserDao().read(nick);
+			Sport sport = DaoFactory.getFactory().getSportDao().read(sportName);
+			DaoFactory.getFactory().getUserDao().addSport(user, sport);
+		} else {
+			// TODO Throws error
+		}
+	}
+
 	public UserListWrapper userList() {
 		List<User> userList = DaoFactory.getFactory().getUserDao().findAll();
 		return getUsersWrapper(userList);
 	}
 
 	public UserListWrapper userList(String sport) {
-		List<User> userList = DaoFactory.getFactory().getUserDao().findValueBySportName(sport);
+		Sport sportEntity = DaoFactory.getFactory().getSportDao().read(sport);
+		List<User> userList = DaoFactory.getFactory().getUserDao().findValueBySportName(sportEntity);
 		return getUsersWrapper(userList);
 	}
 

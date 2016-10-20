@@ -11,7 +11,7 @@ public class User {
 
 	private String email;
 
-	private List<Sport> sports;
+	private List<Sport> sports = new ArrayList<Sport>();
 
 	public User(String nick, String email) {
 		this.nick = nick;

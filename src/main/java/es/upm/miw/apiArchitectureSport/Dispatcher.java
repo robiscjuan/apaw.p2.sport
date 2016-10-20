@@ -74,7 +74,7 @@ public class Dispatcher {
 		if (("users".equals(request.paths()[0])) && ("sport".equals(request.paths()[2]))) {
 			try {
 				// TODO
-				// response.setBody(themeResource.themeOverage(Integer.valueOf(request.paths()[1])).toString());
+				userResource.addSport(request.paths()[1],request.getBody());
 				response.setStatus(HttpStatus.OK);
 			} catch (Exception e) {
 				responseError(response, e);
