@@ -25,11 +25,11 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	}
 
 	@Override
-	public List<User> findValueBySportName(Sport sportName) {
+	public List<User> findValueBySportName(Sport sport) {
 		List<User> users = this.findAll();
 		List<User> usersFiltered = new ArrayList<>();
 		for (User user : users) {
-			if (user.getSports().contains(sportName)) {
+			if (user.getSports().contains(sport)) {
 				usersFiltered.add(user);
 			}
 		}
@@ -47,7 +47,6 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	public void addSport(User entity, Sport sport) {
 		List<Sport> sportList = entity.getSports();
 		sportList.add(sport);
-		entity.setSports(sportList);
 	}
 
 }
