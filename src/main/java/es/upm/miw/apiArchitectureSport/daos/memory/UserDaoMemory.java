@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import es.upm.miw.apiArchitectureSport.daos.UserDao;
+import es.upm.miw.apiArchitectureSport.entities.Sport;
 import es.upm.miw.apiArchitectureSport.entities.User;
 
 public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
@@ -24,22 +25,29 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	}
 
 	@Override
-	public List<String> findValueBySportName(String sportName) {
+	public List<User> findValueBySportName(Sport sportName) {
 		List<User> users = this.findAll();
-		List<String> userNicks = new ArrayList<>();
+		List<User> usersFiltered = new ArrayList<>();
 		for (User user : users) {
 			if (user.getSports().contains(sportName)) {
-				userNicks.add(user.getNick());
+				usersFiltered.add(user);
 			}
 		}
-		return userNicks;
+		return usersFiltered;
 	}
 
 	@Override
 	public void create(User entity) {
 		super.getMap().put(entity.getNick(), entity);
-		this.setId(entity,entity.getNick());
-		
+		this.setId(entity, entity.getNick());
+
+	}
+
+	@Override
+	public void addSport(User entity, Sport sport) {
+		List<Sport> sportList = entity.getSports();
+		sportList.add(sport);
+		entity.setSports(sportList);
 	}
 
 }

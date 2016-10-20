@@ -17,22 +17,21 @@ public class Dispatcher {
 		response.setBody("{\"error\":\"" + e + "\"}");
 		response.setStatus(HttpStatus.BAD_REQUEST);
 	}
-	
+
 	public void doGet(HttpRequest request, HttpResponse response) {
 		// GET **/users
 		if ("users".equals(request.getPath())) {
 			response.setBody(userResource.userList().toString());
 
 		}
-		//GET **/user/search?sport=*
+		// GET **/user/search?sport=*
 		else if (("users".equals(request.paths()[0])) && ("search".equals(request.paths()[1]))) {
 			try {
 				String paramSport = (request.getParams()).get("sport");
 				if (paramSport == null) {
 					responseError(response, new InvalidRequestException(request.getPath()));
 				} else {
-					// TODO
-					// response.setBody(userResource.themeOverage(Integer.valueOf(request.paths()[1])).toString());
+					response.setBody(userResource.userList(paramSport).toString());
 				}
 			} catch (Exception e) {
 				responseError(response, e);
@@ -49,7 +48,7 @@ public class Dispatcher {
 			try {
 				String nick = request.getBody().split(":")[0];
 				String email = request.getBody().split(":")[1];
-				userResource.createUser(nick,email);
+				userResource.createUser(nick, email);
 				response.setStatus(HttpStatus.CREATED);
 			} catch (Exception e) {
 				this.responseError(response, e);
@@ -57,13 +56,11 @@ public class Dispatcher {
 			break;
 		// POST **/sport body="name"
 		case "sports":
-			;
 			try {
-				// TODO
-				// request.getBody()
+				sportResource.createSport(request.getBody());
 				response.setStatus(HttpStatus.CREATED);
 			} catch (Exception e) {
-				responseError(response, e);
+				this.responseError(response, e);
 			}
 			break;
 		default:
@@ -76,8 +73,7 @@ public class Dispatcher {
 		// PUT **/user/{nick}/sport body="sportName"
 		if (("users".equals(request.paths()[0])) && ("sport".equals(request.paths()[2]))) {
 			try {
-				// TODO
-				// response.setBody(themeResource.themeOverage(Integer.valueOf(request.paths()[1])).toString());
+				userResource.addSport(request.paths()[1], request.getBody());
 				response.setStatus(HttpStatus.OK);
 			} catch (Exception e) {
 				responseError(response, e);
