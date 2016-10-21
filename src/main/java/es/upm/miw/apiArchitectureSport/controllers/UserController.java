@@ -20,11 +20,11 @@ public class UserController {
 		}
 	}
 
-	public void addSport(String nick, String sportName) throws NotFoundException {
-		if (DaoFactory.getFactory().getSportDao().read(sportName) != null) {
-			User user = DaoFactory.getFactory().getUserDao().read(nick);
-			Sport sport = DaoFactory.getFactory().getSportDao().read(sportName);
-			DaoFactory.getFactory().getUserDao().addSport(user, sport);
+	public void update(String nick, String sportName) throws NotFoundException {
+		Sport sport = DaoFactory.getFactory().getSportDao().read(sportName);
+		User user = DaoFactory.getFactory().getUserDao().read(nick);
+		if ((user != null) && (sport != null)) {
+			DaoFactory.getFactory().getUserDao().update(user, sport);
 		} else {
 			throw new NotFoundException();
 		}

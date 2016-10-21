@@ -44,7 +44,7 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	}
 
 	@Override
-	public void addSport(User entity, Sport sport) {
+	public void update(User entity, Sport sport) {
 		List<Sport> sportList = entity.getSports();
 		sportList.add(sport);
 	}
