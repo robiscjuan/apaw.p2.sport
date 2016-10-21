@@ -24,8 +24,8 @@ public class UserResource {
 	}
 
 	// PUT **/user/{nick}/sport body="sportName"
-	public void addSport(String nick, String sportName) throws NotFoundException {
-		new UserController().addSport(nick, sportName);
+	public void update(String nick, String sportName) throws NotFoundException {
+		new UserController().update(nick, sportName);
 	}
 
 	private void validateField(String field) throws InvalidSportFieldException {

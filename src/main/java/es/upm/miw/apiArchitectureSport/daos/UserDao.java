@@ -7,5 +7,5 @@ import es.upm.miw.apiArchitectureSport.entities.User;
 
 public interface UserDao extends GenericDao<User, String> {
 	List<User> findValueBySportName(Sport sportName);
-	void addSport(User entity, Sport sport);
+	void update(User entity, Sport sport);
 }

@@ -72,7 +72,7 @@ public class Dispatcher {
 		// PUT **/user/{nick}/sport body="sportName"
 		if (("users".equals(request.paths()[0])) && ("sport".equals(request.paths()[2]))) {
 			try {
-				userResource.addSport(request.paths()[1], request.getBody());
+				userResource.update(request.paths()[1], request.getBody());
 				response.setStatus(HttpStatus.OK);
 			} catch (Exception e) {
 				responseError(response, e);
